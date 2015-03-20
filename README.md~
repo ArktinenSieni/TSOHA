@@ -7,5 +7,7 @@ Tehtävät on mahdollista luokitella prioriteettinsa, nimensä ja luokkansa muka
 
 ## Linkkejä
 [Aihe] (http://advancedkittenry.github.io/suunnittelu_ja_tyoymparisto/aiheet/Muistilista.html)
+
 [Sovellus] (http://mcraty.users.cs.helsinki.fi/tsoha/)
+
 [Dokumentaatio](https://github.com/ArktinenSieni/TSOHA/blob/master/doc/dokumentaatio.pdf)
