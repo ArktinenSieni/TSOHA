@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Chores</h1>
+
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>Chore</th>
+        <th>Class</th>
+        <th>Priority</th>
+        <th></th>
+    </tr>
+    <tbody>
+        <tr>
+            <td>Pay bills</td>
+            <td>Economy</td>
+            <td>5</td>
+            <td><button class="btn btn-success">Finish!</button></td>
+        </tr>
+        <tr>
+            <td>Do TSOHA</td>
+            <td>Homework</td>
+            <td>3</td>
+            <td><button class="btn btn-success">Finish!</button></td>
+        </tr>
+        <tr>
+            <td>Wash dishes</td>
+            <td>Home</td>
+            <td>1</td>
+            <td><button class="btn btn-success">Finish!</button></td>
+        </tr>
+
+    </tbody>
+
+
+</table>
+
+<div class="checkbox">
+    <label>
+        <input type="checkbox">
+        Hide done chores
+    </label>
+</div>
+
+<button class="btn btn-primary">New Chore</button>
+
+{% endblock %}
