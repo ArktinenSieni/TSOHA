@@ -20,10 +20,54 @@
       $errors = array();
 
       foreach($this->validators as $validator){
-        // Kutsu validointimetodia tässä ja lisää sen palauttamat virheet errors-taulukkoon
+        $validator_error = $this->{$validator}();
+        $errors = array_merge($errors, $validator_error);
       }
 
       return $errors;
+    }
+    
+    public function validate_is_string_empty($string) {
+        if ($string == '' || $string == null) {
+            return true;
+        }
+        return false;
+    }
+    
+    public function validate_is_string_long($string, $maxLength) {
+        if(strlen($string) > $maxLength) {
+            return true;
+        }
+        return false;
+    }
+    
+    public function validate_is_string_short($string, $minLength) {
+        if(strlen($string) < $minLength) {
+            return true;
+        }
+        return false;
+    }
+    
+    public function validate_is_int_empty($int) {
+        if($int == null || is_numeric($int) == false) {
+            return true;
+        }
+        return false;
+    }
+    
+    public function validate_is_int_small($int, $min) {
+        if($int < $min) {
+            return true;
+        }
+        return false;
+    }
+    
+    public function validate_is_int_big($int, $max) {
+        if($int > $max) {
+            return true;
+        }
+        
+        return false;
     }
 
   }

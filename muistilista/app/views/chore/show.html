@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>{{chore.name}}</h1>
+
+<div class="alert alert-success">
+    {{message}}
+</div>
+
+<table class="table table-hover">
+    <tr>
+    <th>Status</th>
+    {% if chore.status %}
+    <td><label class="label label-success">Finished</label></td>
+    <td></td>
+    {% else %}
+    <td><label class="label label-warning">Unfinished</label></td>
+    <td><button type="button" class="btn btn-success">Finish!</button></td>
+    {% endif %}
+    </tr>
+</table>
+
+<form>
+    <div class="form-group">
+        <label>Name</label>
+        <input class="form-control" value={{chore.name}}>
+    </div>
+    <div class="form-group">
+        <label>Priority: {{chore.priority}}</label>
+        <select class="form-control" id="sell">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Category: {{chore.category}}</label>
+        <select class="form-control" id="sell">
+            
+        </select>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Save changes</button>
+    </div>
+</form>
+
+
+
+<button type="button" class="btn btn-warning">Delete chore</button>
+
+{% endblock %}

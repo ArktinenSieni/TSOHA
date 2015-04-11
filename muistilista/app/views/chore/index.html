@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Chores</h1>
+
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>Chore</th>
+        <th>Category</th>
+        <th>Priority</th>
+        <th></th>
+    </tr>
+    <tbody>
+        {% for chore in chores %}
+        <tr>
+            <td><a href="{{base_path}}/chore/{{chore.id}}">{{chore.name}}</td>
+            {% if chore.class %}
+            <td>{{chore.class}}</td>
+            {% else %}
+            <td></td>
+            {% endif %}
+            <td>{{chore.priority}}</td>
+            {% if chore.status %}
+            <td><label class="label label-success">Finished</label></td>
+            {% else %}
+            <td><button class="btn btn-success">Finish!</button></td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+
+    </tbody>
+
+
+</table>
+
+<p>
+    <a href="{{base_path}}/chore/new" class="btn btn-primary">New Chore</a>
+</p>
+
+{% endblock %}
