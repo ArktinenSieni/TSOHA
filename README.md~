@@ -5,6 +5,13 @@ Tavoitteena on tehdä muistilista tavallisille arkisille asioille.
 Eri tehtävillä on eri prioriteetit. Jokaiselle tehtävälle on mahdollista luoda oma luokkansa, ja joukainen luokka voi olla jonkin luokan aliluokka.
 Tehtävät on mahdollista luokitella prioriteettinsa, nimensä ja luokkansa mukaan.
 
+## Testaamiseen
+Tällä hetkellä mahdollisia käyttäjätunnuksia ovat seuraavat:
+| Käyttäjätunnus | Salasana  |
+|---------------:|----------:|
+|testi           |testi      |
+|Matti           |meikelainen|
+
 ## Linkkejä
 [Aihe] (http://advancedkittenry.github.io/suunnittelu_ja_tyoymparisto/aiheet/Muistilista.html)
 
