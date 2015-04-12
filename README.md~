@@ -7,10 +7,11 @@ Tehtävät on mahdollista luokitella prioriteettinsa, nimensä ja luokkansa muka
 
 ## Testaamiseen
 Tällä hetkellä mahdollisia käyttäjätunnuksia ovat seuraavat:
-| Käyttäjätunnus | Salasana  |
-|---------------:|----------:|
-|testi           |testi      |
-|Matti           |meikelainen|
+
+Käyttäjätunnus | Salasana
+--- | ---
+testi | testi
+Matti | meikelainen
 
 ## Linkkejä
 [Aihe] (http://advancedkittenry.github.io/suunnittelu_ja_tyoymparisto/aiheet/Muistilista.html)

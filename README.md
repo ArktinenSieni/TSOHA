@@ -6,9 +6,10 @@ Eri tehtävillä on eri prioriteetit. Jokaiselle tehtävälle on mahdollista luo
 Tehtävät on mahdollista luokitella prioriteettinsa, nimensä ja luokkansa mukaan.
 
 ## Testaamiseen
+Sovellukseen pääsee osoitteessa: 
 Tällä hetkellä mahdollisia käyttäjätunnuksia ovat seuraavat:
 
-Käyttäjätunnus | Salasana
+Käyttäjätunnus | Salasana [http://mcraty.users.cs.helsinki.fi/tsoha/] (http://mcraty.users.cs.helsinki.fi/tsoha/)
 --- | ---
 testi | testi
 Matti | meikelainen
