@@ -7,7 +7,7 @@ Tehtävät on mahdollista luokitella prioriteettinsa, nimensä ja luokkansa muka
 
 ## Testaamiseen
 Sovellukseen pääsee osoitteessa [http://mcraty.users.cs.helsinki.fi/tsoha/] (http://mcraty.users.cs.helsinki.fi/tsoha/).
-
+Ohjelmaa pääsee kokeilemaan kirjautumalla sisään. Sisään kirjauduttua voi selata lisättyjä askareita, luoda uusia ja tarkasella olemassa olevia, sekä merkata askareita tehdyksi.
 Tällä hetkellä mahdollisia käyttäjätunnuksia ovat seuraavat:
 
 Käyttäjätunnus | Salasana 
