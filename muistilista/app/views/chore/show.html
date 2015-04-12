@@ -21,7 +21,9 @@
         {% else %}
         <td><label class="label label-warning">Unfinished</label></td>
         <td>
-            {{forms.finish_button()}}
+            <form method ="post" action="{{base_path}}/chore/{{chore.id}}/finish">
+                <button type="submit" class="btn btn-success">Finish!</button>
+            </form>
         </td>
         {% endif %}
     </tr>

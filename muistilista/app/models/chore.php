@@ -70,7 +70,7 @@ class Chore extends BaseModel {
         $statement = 'UPDATE Chore SET name = :name, priority = :priority, category_id = :category_id WHERE id = :id RETURNING id';
         $query = DB::connection()->prepare($statement);
         
-        $parameters = array('name' => $this->name, 'category_id' => $this->category_id, 'priority' => $this->priority, 'account_id' => $this->account_id, 'id' => $this->id);
+        $parameters = array('name' => $this->name, 'category_id' => $this->category_id, 'priority' => $this->priority, 'id' => $this->id);
         $query->execute($parameters);
         
         $row = $query->fetch();
