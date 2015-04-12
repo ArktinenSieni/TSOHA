@@ -1,32 +1,40 @@
 {% extends "base.html" %}
 {% block content %}
+
+{% import "macros/forms.html" as forms %}
 <h1>{{chore.name}}</h1>
 
+{% if message %}
 <div class="alert alert-success">
     {{message}}
 </div>
+{% endif %}
+
+
 
 <table class="table table-hover">
     <tr>
-    <th>Status</th>
-    {% if chore.status %}
-    <td><label class="label label-success">Finished</label></td>
-    <td></td>
-    {% else %}
-    <td><label class="label label-warning">Unfinished</label></td>
-    <td><button type="button" class="btn btn-success">Finish!</button></td>
-    {% endif %}
+        <th>Status</th>
+        {% if chore.status %}
+        <td><label class="label label-success">Finished</label></td>
+        <td></td>
+        {% else %}
+        <td><label class="label label-warning">Unfinished</label></td>
+        <td>
+            {{forms.finish_button()}}
+        </td>
+        {% endif %}
     </tr>
 </table>
 
-<form>
+<form method="post" action="{{base_path}}/chore/{{chore.id}}">
     <div class="form-group">
         <label>Name</label>
-        <input class="form-control" value={{chore.name}}>
+        <input name="name" class="form-control" value={{chore.name}}>
     </div>
     <div class="form-group">
         <label>Priority: {{chore.priority}}</label>
-        <select class="form-control" id="sell">
+        <select name="priority" class="form-control" id="sell">
             <option>1</option>
             <option>2</option>
             <option>3</option>
@@ -35,9 +43,9 @@
         </select>
     </div>
     <div class="form-group">
-        <label>Category: {{chore.category}}</label>
-        <select class="form-control" id="sell">
-            
+        <label>Category: {{chore.category_id}}</label>
+        <select name="category" class="form-control" id="sell">
+            <option>{{chore.category_id}}</option>
         </select>
     </div>
     <div class="form-group">
@@ -45,8 +53,6 @@
     </div>
 </form>
 
-
-
-<button type="button" class="btn btn-warning">Delete chore</button>
+{{forms.delete_button("#{base_path}/chore/#{chore.id}/delete", "Delete Chore")}}
 
 {% endblock %}

@@ -1,6 +1,20 @@
 {% extends "base.html" %}
 {% block content %}
+
+{% import "macros/forms.html" as forms %}
 <h1>Chores</h1>
+
+{% if message %}
+<div class="alert alert-success">
+    {{message}}
+</div>
+{% endif %}
+
+{% if error %}
+<div class="alert alert-warning">
+    {{error}}
+</div>
+{% endif %}
 
 <table class="table table-bordered table-striped">
     <tr>
@@ -20,9 +34,16 @@
             {% endif %}
             <td>{{chore.priority}}</td>
             {% if chore.status %}
-            <td><label class="label label-success">Finished</label></td>
+            <td>
+                <label class="label label-success">Finished</label>
+
+                {{forms.delete_button("#{base_path}/chore/#{chore.id}/delete", "Delete Chore")}}
+            </td>
             {% else %}
-            <td><button class="btn btn-success">Finish!</button></td>
+            <td>
+
+                {{forms.finish_button()}}
+            </td>
             {% endif %}
         </tr>
         {% endfor %}

@@ -13,9 +13,14 @@ Tehtävät on mahdollista luokitella prioriteettinsa, nimensä ja luokkansa muka
 [Dokumentaatio](https://github.com/ArktinenSieni/TSOHA/blob/master/muistilista/doc/dokumentaatio.pdf)
 
 ### Suunnittelua
-[Askareiden listaussivu] (http://mcraty.users.cs.helsinki.fi/tsoha/chores),
-[Askareen muokkaussivu] (http://mcraty.users.cs.helsinki.fi/tsoha/chore),
-[Kirjautumissivu] (http://mcraty.users.cs.helsinki.fi/tsoha/login),
-[Käyttäjän muokkaussivu] (http://mcraty.users.cs.helsinki.fi/tsoha/account),
-[Luokkien listaussivu] (http://mcraty.users.cs.helsinki.fi/tsoha/classes),
-[Luokan muokkaussivu] (http://mcraty.users.cs.helsinki.fi/tsoha/class),
+[Askareiden listaussivu] (http://mcraty.users.cs.helsinki.fi/tsoha/chores)
+
+[Askareen muokkaussivu] (http://mcraty.users.cs.helsinki.fi/tsoha/chore)
+
+[Kirjautumissivu] (http://mcraty.users.cs.helsinki.fi/tsoha/login)
+
+[Käyttäjän muokkaussivu] (http://mcraty.users.cs.helsinki.fi/tsoha/account)
+
+[Luokkien listaussivu] (http://mcraty.users.cs.helsinki.fi/tsoha/classes)
+
+[Luokan muokkaussivu] (http://mcraty.users.cs.helsinki.fi/tsoha/class)

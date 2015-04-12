@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Login</h1>
+
+{% if error %}
+<div class="alert alert-danger">
+    {{error}}
+</div>
+{% endif %}
+
+<form method="post" action="{{base_path}}/login">
+    <div class="form-group">
+        <label>Username</label>
+        <input class="form-control" name="name" value="{{username}}" type="text">
+    </div>
+
+    <div class="form-group">
+        <label>Password</label>
+        <input class="form-control" name="password" type="password">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Log in</button>
+</form>
+{% endblock %}

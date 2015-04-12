@@ -16,12 +16,14 @@
 <form method="post" action="{{base_path}}/chore">
     <div>
         <label>Name:</label>
-        <input name="name" class="form-control" type ="text">
+        <input name="name" class="form-control" type ="text" value="{{attributes.name}}">
     </div>
     
     <div>
         <label>Category:</label>
-        <input name="category" class="form-control">
+        <select name="category" class="form-control">
+            <option>3</option>
+        </select>
     </div>
     
     <div>

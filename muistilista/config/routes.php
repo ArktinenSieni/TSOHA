@@ -1,5 +1,6 @@
 <?php
 
+
 $routes->get('/', function() {
     ChoreController::index();
 });
@@ -19,6 +20,27 @@ $routes->get('/chore/new', function(){
 
 $routes->get('/chore/:id', function($id) {
     ChoreController::show($id);
+});
+
+$routes->post('/chore/:id', function($id){
+    ChoreController::update($id);
+});
+
+$routes->post('/chore/:id/finish', function($id){
+    ChoreController::finish($id);
+});
+
+$routes->post('/chore/:id/delete', function($id){
+    ChoreController::delete($id);
+});
+
+$routes->get('/login', function(){
+  // Kirjautumislomakkeen esittäminen
+  AccountController::login();
+});
+$routes->post('/login', function(){
+  // Kirjautumisen käsittely
+  AccountController::handle_login();
 });
 
 $routes->get('/hiekkalaatikko', function() {
