@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- Yksittäisen kategorian esittelysivu -->
+
+{% import "macros/forms.html" as forms %}
+<h1>{{category.name}}</h1>
+
+{% if message %}
+<div class="alert alert-success">
+    {{message}}
+</div>
+{% endif %}
+
+<!-- Tuleva ominaisuus: alikategorioiden listaus. Mahdollisesti lisään myös isäntäkategoroiden listauksen -->
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>Subclasses</th>
+    </tr>
+    <tr>
+        <td>Fun</td>
+        <td>{{forms.delete_button('#', 'Remove')}}</td>
+    </tr>
+</table>
+
+<!-- Tuleva ominaisuus: Uuden alikategorian ja mahdollisesti isäntäkategorian lisääminen-->
+<form>
+    <div>
+        <label>Add subclass</label>
+        <select class="form-control" id="sell">
+            {% for cat in categories %}
+                {% if cat.id != category.id %}
+                <option value="{{cat.id}}">{{cat.name}}</option>
+                {% endif %}
+            {% endfor %}
+            
+        </select>
+    </div>
+    <div>
+        <button type="submit" class="btn btn-primary">Add Subcategory</button>
+    </div>
+</form>
+
+<!-- Tuleva ominaisuus: Categorian poistaminen -->
+<button type="button" class="btn btn-danger">Remove Category</button>
+
+{% endblock %}

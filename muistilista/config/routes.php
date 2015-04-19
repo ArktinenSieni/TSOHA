@@ -1,6 +1,6 @@
 <?php
 
-
+// Askareiden toiminnot
 $routes->get('/', function() {
     ChoreController::index();
 });
@@ -34,6 +34,7 @@ $routes->post('/chore/:id/delete', function($id){
     ChoreController::delete($id);
 });
 
+//Käyttäjän toiminnot
 $routes->get('/login', function(){
   // Kirjautumislomakkeen esittäminen
   AccountController::login();
@@ -43,6 +44,21 @@ $routes->post('/login', function(){
   AccountController::handle_login();
 });
 
+$routes->post('/logout', function() {
+    AccountController::logout();
+});
+
+//Kategorioiden toiminnot
+$routes->get('/category', function() {
+    CategoryController::index();
+});
+
+$routes->get('/category/:id', function($id) {
+    CategoryController::show($id);
+});
+
+
+//Hiekkalaatikko ja suunnitelmat
 $routes->get('/hiekkalaatikko', function() {
     HelloWorldController::sandbox();
 });

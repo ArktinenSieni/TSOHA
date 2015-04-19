@@ -1,24 +1,39 @@
 {% extends "base.html" %}
 {% block content %}
 
+<!-- Yksittäisen askareen esittelysivu, jossa voi myös muokata askareen tietoja -->
+
 {% import "macros/forms.html" as forms %}
 <h1>{{chore.name}}</h1>
 
+<!-- Mahdollisten viestien ja virheiden näyttäminen -->
 {% if message %}
 <div class="alert alert-success">
     {{message}}
 </div>
 {% endif %}
 
+{% if errors %}
+<div class="alert alert-danger">
+    <ul>
+        {% for error in errors %}
+        <li>{{error}}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
 
 
+<!-- Askareen statuksen muokkaaminen. Voi ainoastaan asettaa tekemättömän askareen tehdyksi -->
 <table class="table table-hover">
     <tr>
         <th>Status</th>
         {% if chore.status %}
+        <!-- Askare on suoritettu -->
         <td><label class="label label-success">Finished</label></td>
         <td></td>
         {% else %}
+        <!-- Askaretta ei ole tehty, annetaan mahdollisuus merkitä se tehdyksi -->
         <td><label class="label label-warning">Unfinished</label></td>
         <td>
             <form method ="post" action="{{base_path}}/chore/{{chore.id}}/finish">
@@ -29,6 +44,7 @@
     </tr>
 </table>
 
+<!-- Askareen tietojen esittely, ja muokkaamislomake -->
 <form method="post" action="{{base_path}}/chore/{{chore.id}}">
     <div class="form-group">
         <label>Name</label>
@@ -45,9 +61,19 @@
         </select>
     </div>
     <div class="form-group">
-        <label>Category: {{chore.category_id}}</label>
+        <!-- Joudutaan etsimään käyttäjän kategoroista oikea kategoria askareen kategoria-id:n perusteella -->
+        <label>Category: {% for cat in categories %}
+                            {% if chore.category_id == cat.id %}
+                                {{cat.name}}
+                            {% endif%}
+                         {% endfor %}
+        </label>
         <select name="category" class="form-control" id="sell">
-            <option>{{chore.category_id}}</option>
+            {% for cat in categories %}{{chore.category_id}}
+                
+                <option value="{{cat.id}}">{{cat.name}}</option>
+                
+            {% endfor %}
         </select>
     </div>
     <div class="form-group">
@@ -55,6 +81,7 @@
     </div>
 </form>
 
+<!-- Poistonappi -->
 {{forms.delete_button("#{base_path}/chore/#{chore.id}/delete", "Delete Chore")}}
 
 {% endblock %}

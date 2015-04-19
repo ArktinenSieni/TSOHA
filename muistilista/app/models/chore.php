@@ -1,6 +1,7 @@
 <?php
 
 class Chore extends BaseModel {
+    //Askareen malli
 
     public $id, $name, $category_id, $priority, $status, $account_id;
 
@@ -9,6 +10,7 @@ class Chore extends BaseModel {
         $this->validators = array('validate_name', 'validate_priority');
     }
 
+    //Palauttaa kaikki parametrina annetun käyttäjän askareet
     public static function all($account_id) {
         $attribute = 'SELECT * FROM Chore WHERE account_id = :account_id';
         $query = DB::connection()->prepare($attribute);
@@ -33,6 +35,7 @@ class Chore extends BaseModel {
         return $chores;
     }
 
+    //Palauttaa tietokannasta askareen sen id:n perusteella
     public static function find($id) {
         $attribute = 'SELECT * FROM Chore WHERE id = :id LIMIT 1';
         $query = DB::connection()->prepare($attribute);
@@ -55,6 +58,7 @@ class Chore extends BaseModel {
         return null;
     }
 
+    //Tallentaa tietokantaan uuden askareen annetun parametrina annetulle käyttäjälle
     public function save($user_id) {
         $statement = 'INSERT INTO Chore (name, category_id, priority, account_id) VALUES (:name, :category_id, :priority, :account_id) RETURNING id';
         $query = DB::connection()->prepare($statement);
@@ -66,6 +70,7 @@ class Chore extends BaseModel {
         $this->id = $row['id'];
     }
     
+    //Päivittää tietokannassa olemassa olevaa askaretta
     public function update() {
         $statement = 'UPDATE Chore SET name = :name, priority = :priority, category_id = :category_id WHERE id = :id RETURNING id';
         $query = DB::connection()->prepare($statement);
@@ -77,6 +82,7 @@ class Chore extends BaseModel {
         $this->id = $row['id'];
     }
     
+    //Merkitsee tietokannassa olevan askareen tehdyksi.
     public function finish() {
         $statement = 'UPDATE Chore SET status = true WHERE id = :id RETURNING id';
         $query = DB::connection()->prepare($statement);
@@ -88,6 +94,7 @@ class Chore extends BaseModel {
         $this->id = $row['id'];
     }
     
+    //Poistaa tietokannassa olevan askareen
     public function delete() {
         $statement = 'DELETE FROM Chore WHERE id = :id';
         $query = DB::connection()->prepare($statement);
@@ -96,6 +103,7 @@ class Chore extends BaseModel {
         $query->execute($parameters);        
     }
 
+    //Validoi askareen nimi-attribuutin.
     public function validate_name() {
         $errors = array();
 
@@ -112,6 +120,7 @@ class Chore extends BaseModel {
         return $errors;
     }
 
+    //Validoi askareen prioriteetti-attribuutin.
     public function validate_priority() {
         $errors = array();
 

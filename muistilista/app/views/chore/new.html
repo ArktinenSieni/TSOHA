@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
 
+<!-- Uuden askareen luomis-luomaki -->
 <h1>Add a new chore!</h1>
 
+<!-- Mahdolliset luomisen yhteydessä tapahtuneet virheet -->
 {% if errors %}
 <div class="alert alert-danger">
     <ul>
@@ -13,19 +15,23 @@
 </div>
 {% endif %}
 
+
+<!-- Itse lomake -->
 <form method="post" action="{{base_path}}/chore">
     <div>
         <label>Name:</label>
         <input name="name" class="form-control" type ="text" value="{{attributes.name}}">
     </div>
-    
+
     <div>
         <label>Category:</label>
         <select name="category" class="form-control">
-            <option>3</option>
+            {% for cat in categories %}
+            <option value="{{cat.id}}">{{cat.name}}</option>
+            {% endfor %}
         </select>
     </div>
-    
+
     <div>
         <label>Priority:</label>
         <select name="priority" class="form-control">
@@ -36,7 +42,7 @@
             <option>5</option>
         </select>
     </div>
-    
+
     <div>
         <button type="submit" class="btn btn-primary">Add</button>
     </div>

@@ -1,6 +1,7 @@
 <?php
 
 class Account extends BaseModel {
+    //Käyttäjän malli
 
     public $id, $name, $password;
 
@@ -8,6 +9,7 @@ class Account extends BaseModel {
         parent::__construct($attributes);
     }
 
+    //Varmentaa tietojensa perusteella userin tiedot oikeiksi tai vääriksi
     public function authenticate($username, $password) {
         $query = DB::connection()->prepare('SELECT * FROM Account WHERE name = :name AND password = :password LIMIT 1');
         $query->execute(array('name' => $username, 'password' => $password));
@@ -24,6 +26,7 @@ class Account extends BaseModel {
         }
     }
 
+    //Hakee accountin tietokannasta
     public static function find($account_id) {
         $query = DB::connection()->prepare('SELECT * FROM Account WHERE id = :id LIMIT 1');
         $query->execute(array('id' => $account_id));

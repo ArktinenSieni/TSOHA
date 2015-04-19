@@ -1,13 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
 <h1>Login</h1>
+<!-- Kirjautumisikkuna -->
 
+<!-- Mahdolliset viestit ja virheilmoitukset -->
 {% if error %}
 <div class="alert alert-danger">
     {{error}}
 </div>
 {% endif %}
 
+<!-- Kirjautumisen tekstikentät, nimensä mukaisesti käyttäjätunnus ja salasana, sekä kirjautumisnappi -->
 <form method="post" action="{{base_path}}/login">
     <div class="form-group">
         <label>Username</label>

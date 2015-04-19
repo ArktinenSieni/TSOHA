@@ -1,9 +1,14 @@
 {% macro delete_button(action, text) %}
+
+<!-- Makrot yleisimmille html-sivun osille -->
+
+<!-- Poistonappi -->
 <form method ="post" action="{{action}}">
     <button type="submit" class="btn btn-warning">{{text|default(Delete)}}</button>
 </form>
 {% endmacro %}
 
+<!-- Askareen suoritusnappi -->
 {% macro finish_button() %}
 <form method ="post" action="{{base_path}}/chore/{{chore.id}}/finish">
     <button type="submit" class="btn btn-success">Finish!</button>

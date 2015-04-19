@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% import "macros/forms.html" as forms %}
+
+<h1>Categories</h1>
+<!-- Kategorioiden listaussivu -->
+
+<!-- Mahdolliset viestit ja virheilmoitukset -->
+{% if message %}
+<div class="alert alert-success">
+    {{message}}
+</div>
+{% endif %}
+
+{% if error %}
+<div class="alert alert-warning">
+    {{error}}
+</div>
+{% endif %}
+
+<!-- Olemassaolevien kategorioiden lsitaus -->
+<table class="table table-bordered table-striped">
+    
+    {% for category in categories %}
+    <tr>
+        <td><a href="{{base_path}}/category/{{category.id}}">{{category.name}}</td>
+    </tr>
+    {% endfor %}
+    
+    
+</table>
+
+<!-- Tuleva ominaisuus: uuden kategorian luomisen linkki -->
+<button class="btn btn-primary">New Category</button>
+
+{% endblock %}

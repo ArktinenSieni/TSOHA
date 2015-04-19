@@ -8,11 +8,9 @@ class HelloWorldController extends BaseController {
     }
 
     public static function sandbox() {
-        $askare = Chore::find(2);
-        $askareet = Chore::all(1);
+        $categories = Category::all(1);
         
-        Kint::dump($askare);
-        Kint::dump($askareet);
+        Kint::dump($categories);
     }
 
     public static function login() {
