@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- Uuden kategorian luomis-luomake -->
+<h1>Add a new category!</h1>
+
+<!-- Mahdolliset luomisen yhteydessä tapahtuneet virheet -->
+{% if errors %}
+<div class="alert alert-danger">
+    <ul>
+        {% for error in errors %}
+        <li>{{error}}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+
+
+<!-- Itse lomake -->
+<form method="post" action="{{base_path}}/category">
+    <div>
+        <label>Name:</label>
+        <input name="name" class="form-control" type ="text" value="{{attributes.name}}">
+    </div>
+    
+    <div>
+        <label>Parent category:</label>
+        <select name="parent" class="form-control">
+            {% for cat in categories %}
+            <option value="{{cat.id}}">{{cat.name}}</option>
+            {% endfor %}
+        </select>
+    </div>
+    
+    <div>
+        <button type="submit" class="btn btn-primary">Add</button>
+    </div>
+</form>
+
+{% endblock %}

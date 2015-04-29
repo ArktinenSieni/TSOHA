@@ -49,14 +49,38 @@ $routes->post('/logout', function() {
 });
 
 //Kategorioiden toiminnot
+$routes->post('/removeconnection/:pid/:cid', function($pid, $cid){
+    CategoryController::remove_subcategory($pid, $cid);
+});
+
+$routes->post('/addconnection/:id', function($id){
+    CategoryController::add_subcategory($id);
+});
+
+//Kategorioiden listaaminen
 $routes->get('/category', function() {
     CategoryController::index();
 });
 
+//Katogerian luomissivun haku
+$routes->get('/category/new', function(){
+    CategoryController::create();
+});
+
+//Kategorian luonti
+$routes->post('/category', function() {
+    CategoryController::store();
+});
+
+//Kategorian esittelysivu
 $routes->get('/category/:id', function($id) {
     CategoryController::show($id);
 });
 
+//Kategorian poisto
+$routes->post('/category/:id/delete', function($id) {
+    CategoryController::delete($id);
+});
 
 //Hiekkalaatikko ja suunnitelmat
 $routes->get('/hiekkalaatikko', function() {

@@ -12,36 +12,101 @@
 </div>
 {% endif %}
 
-<!-- Tuleva ominaisuus: alikategorioiden listaus. Mahdollisesti lisään myös isäntäkategoroiden listauksen -->
+<!-- Kategoriaan kuuluvat askareet -->
 <table class="table table-bordered table-striped">
     <tr>
-        <th>Subclasses</th>
+        <th>Chore</th>
+        <th>Category</th>
+        <th>Priority</th>
+        <th></th>
     </tr>
-    <tr>
-        <td>Fun</td>
-        <td>{{forms.delete_button('#', 'Remove')}}</td>
-    </tr>
+    <tbody>
+        {% for chore in chores %}
+        <tr>
+            <td><a href="{{base_path}}/chore/{{chore.id}}">{{chore.name}}</td>
+            
+            <!-- Etsii käyttäjän kategorioista oikean kategorian nimen sen id:n perusteella -->
+            {% if chore.category_id %}
+                {% for cat in categories %}
+                    {% if cat.id == chore.category_id %}
+                    <td><a href="{{base_path}}/category/{{cat.id}}">{{cat.name}}</td>
+                    {% endif %}
+                {% endfor %}            
+            {% endif %}
+            <td>{{chore.priority}}</td>
+            <!-- Onko askare tehty vai ei. -->
+            {% if chore.status %}
+            <td>
+                <!-- Nappi jolla merkitään että askare on tehty. -->
+                <label class="label label-success">Finished</label>
+
+                {{forms.delete_button("#{base_path}/chore/#{chore.id}/delete", "Delete Chore")}}
+            </td>
+            {% else %}
+            <!-- Askare on tehty, ja annetaan mahdollisuus poistaa askare -->
+            <td>
+                <form method ="post" action="{{base_path}}/chore/{{chore.id}}/finish">
+                    <button type="submit" class="btn btn-success">Finish!</button>
+                </form>
+            </td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+
+    </tbody>
 </table>
 
-<!-- Tuleva ominaisuus: Uuden alikategorian ja mahdollisesti isäntäkategorian lisääminen-->
-<form>
-    <div>
-        <label>Add subclass</label>
-        <select class="form-control" id="sell">
-            {% for cat in categories %}
-                {% if cat.id != category.id %}
-                <option value="{{cat.id}}">{{cat.name}}</option>
-                {% endif %}
-            {% endfor %}
-            
-        </select>
+<!-- Ylikategorioiden listaus -->
+<table class="table table-bordered" >
+    <tr>
+        <th>Parent categories</th>
+    </tr>
+    {% for parent in parents %}
+    <tr>
+        <td><a class="text text-primary" href="{{base_path}}/category/{{parent.id}}">{{parent.name}}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<!-- Alikategorioiden listaus.-->
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>Subcategories</th>
+    </tr>
+    {% for child in children %}
+    <tr>
+        <td><a href="{{base_path}}/category/{{child.id}}">{{child.name}}</td>
+        <td>{{forms.delete_button("#{base_path}/removeconnection/#{category.id}/#{child.id}", 'Remove connection')}}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<!-- Uuden alikategorian lisääminen.-->
+<form method="post" action="{{base_path}}/addconnection/{{category.id}}">
+    <div class="form-group">
+        <input type="hidden" name="parent" value="{{category.id}}">
     </div>
+
+    <label>Add subclass</label>
+    <select name="child" class="form-control" id="sell">
+        {% for cat in categories %}
+        {% if cat.id != category.id %}
+        <option value="{{cat.id}}">{{cat.name}}</option>
+        {% endif %}
+        {% endfor %}    
+    </select>
+
     <div>
         <button type="submit" class="btn btn-primary">Add Subcategory</button>
     </div>
 </form>
 
-<!-- Tuleva ominaisuus: Categorian poistaminen -->
-<button type="button" class="btn btn-danger">Remove Category</button>
+
+<!-- Categorian poistaminen -->
+<form method ="post" action="{{base_path}}/category/{{category.id}}/delete">
+    <div>
+        <button type="submit" class="btn btn-danger">Delete Category</button>        
+    </div>
+</form>
 
 {% endblock %}
