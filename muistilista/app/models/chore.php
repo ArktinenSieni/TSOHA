@@ -10,6 +10,16 @@ class Chore extends BaseModel {
         parent::__construct($attributes);
         $this->validators = array('validate_name', 'validate_priority');
     }
+    
+    public function comp($chore1, $chore2) {
+        if ($chore1['status'] == $chore2['status']) {
+            if ($chore1['priority'] == $chore2['priority']) {
+                return $chore1['name'] - $chore2['name'];
+            }
+            return $chore1['priority'] - $chore2['priority'];
+        }
+        return $chore1['status'] - $chore2['status'];
+    }
 
     //Palauttaa kaikki parametrina annetun käyttäjän askareet
     public static function all($account_id) {
@@ -32,7 +42,15 @@ class Chore extends BaseModel {
                 ));
             }
         }
-
+        usort($chores, function($a, $b) {
+            if ($a->status == $b->status) {
+                if ($a->priority == $b->priority) {
+                    return $a->name > $b-> name;
+                }
+                return $a->priority < $b->priority;
+            }
+            return $a->status;
+        });
         return $chores;
     }
 

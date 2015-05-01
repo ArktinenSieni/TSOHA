@@ -69,6 +69,7 @@ class ChoreController extends BaseController {
         self::check_priviledges($chore->account_id);
         $categories = Category::all($chore->account_id);
         
+        
         View::make('chore/show.html', array('chore' => $chore, 'categories' => $categories));
     }
     
@@ -101,5 +102,5 @@ class ChoreController extends BaseController {
         $categories = Category::all($_SESSION['user']);
         View::make('chore/new.html', array('categories' => $categories));
     }
-
+    
 }

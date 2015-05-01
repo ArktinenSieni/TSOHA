@@ -1,51 +1,70 @@
 <?php
 
 // Askareiden toiminnot
+//Listaus
 $routes->get('/', function() {
     ChoreController::index();
 });
 
+//Listaus
 $routes->get('/chore', function() {
     ChoreController::index();
 });
 
-
+//Askareen tallentaminen
 $routes->post('/chore/', function() {
     ChoreController::store();
 });
 
+//Askareen luomissivu
 $routes->get('/chore/new', function(){
     ChoreController::create();
 });
 
+//Askareen tallentaminen
 $routes->get('/chore/:id', function($id) {
     ChoreController::show($id);
 });
 
+//Askareen esittelysivu
 $routes->post('/chore/:id', function($id){
     ChoreController::update($id);
 });
 
+//Askareen merkitseminen tehdyksi
 $routes->post('/chore/:id/finish', function($id){
     ChoreController::finish($id);
 });
 
+//Askareen poistaminen
 $routes->post('/chore/:id/delete', function($id){
     ChoreController::delete($id);
 });
 
 //Käyttäjän toiminnot
+// Kirjautumislomakkeen esittäminen
 $routes->get('/login', function(){
-  // Kirjautumislomakkeen esittäminen
   AccountController::login();
 });
+
+// Kirjautumisen käsittely
 $routes->post('/login', function(){
-  // Kirjautumisen käsittely
   AccountController::handle_login();
 });
 
+//Uloskirjautumisen käsittely
 $routes->post('/logout', function() {
     AccountController::logout();
+});
+
+//Rekisteröitymislomakkeen haku
+$routes->get('/register', function() {
+    AccountController::create();
+});
+
+//Rekisteröityminen, käyttäjän luominen
+$routes->post('/register', function() {
+    AccountController::store();
 });
 
 //Kategorioiden toiminnot

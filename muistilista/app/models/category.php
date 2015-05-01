@@ -82,12 +82,14 @@ class Category extends BaseModel {
         return $parentcategories;
     }
     
+    
+    
     //Tallentaa lisätyn kategorian
-    public function save($user_id) {
+    public function save() {
         $statement = 'INSERT INTO Category(name, account_id) VALUES (:name, :account_id) RETURNING id';
         $query = DB::connection()->prepare($statement);
         
-        $query->execute(array('name'=> $this->name, 'account_id' => $user_id));
+        $query->execute(array('name'=> $this->name, 'account_id' => $this->account_id));
         
         $row = $query->fetch();
         
